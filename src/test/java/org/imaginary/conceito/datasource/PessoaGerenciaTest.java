@@ -48,6 +48,7 @@ public class PessoaGerenciaTest
 		contato.setNome("Auginete Lobo");
 		listContatos.add(contato);
 		
+		
 
 		
 		pes.setListaContatos(listContatos);

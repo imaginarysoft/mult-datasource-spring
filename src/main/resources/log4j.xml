@@ -28,9 +28,6 @@
 		<level value="WARN" />
 	</logger>
 	
-	<logger name="com.ht4b.slingcontrol">
-		<level value="INFO" />
-	</logger>
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
