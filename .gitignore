@@ -14,6 +14,7 @@
 /lib
 /log
 */target
+/target
 /bin
 */bin
 */.settings
