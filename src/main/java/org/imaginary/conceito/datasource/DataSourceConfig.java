@@ -20,6 +20,7 @@ public class DataSourceConfig
 		
 	
 		databaseRouterDataSource.setTargetDataSources(montarDataSources());
+		databaseRouterDataSource.setDefaultTargetDataSource(new DriverManagerDataSource("org.postgresql.Driver" ,"jdbc:postgresql://localhost/data_c", "postgres" , "postgres" ));
 		
 		return databaseRouterDataSource;
 		

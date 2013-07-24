@@ -1,11 +1,12 @@
 package org.imaginary.conceito.datasource;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-public class Pessoa
+public class Pessoa  implements Serializable
 {
 
 	private Integer id; 

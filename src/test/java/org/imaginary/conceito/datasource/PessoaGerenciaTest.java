@@ -60,7 +60,10 @@ public class PessoaGerenciaTest
 	public void testObterPessoa()
 	{
 		DataBaseContextHolder.setDatabaseType("B");
-		System.out.println(pessoaGerencia.obterPessoa(2));
+		System.out.println(pessoaGerencia.obterPessoa(1));
+		
+		DataBaseContextHolder.setDatabaseType("A");
+		System.out.println(pessoaGerencia.obterPessoa(1));
 	}
 
 }

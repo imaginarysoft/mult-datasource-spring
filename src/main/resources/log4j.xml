@@ -23,10 +23,7 @@
 	
 	
 	<!-- Application Loggers -->
-	
-	<logger name="org.apache.shiro">
-		<level value="WARN" />
-	</logger>
+
 	
 	
 	<!-- 3rdparty Loggers -->
@@ -46,9 +43,14 @@
 		<level value="WARN" />
 	</logger>
 	
+    <logger name="org.springframework.aop.framework">
+		<level value="WARN" />
+	</logger>
+	
+	
 	<!-- Root Logger -->
 	<root>
-		<priority value="WARN" />
+		<priority value="DEBUG" />
 		<appender-ref ref="console" />
 		<appender-ref ref="DAYLOG" />
 <!--		<appender-ref ref="SMTP" />		-->

@@ -2,9 +2,19 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
+    
 <mapper namespace="Pessoa">
 
+
+
+<!--   <cache type="org.mybatis.caches.ehcache.LoggingEhcache"> -->
+<!--     <property name="timeToIdleSeconds" value="360"/> -->
+<!--     <property name="timeToLiveSeconds" value="360"/> -->
+<!--     <property name="maxEntriesLocalHeap" value="1000"/> -->
+<!--     <property name="maxEntriesLocalDisk" value="100000"/> -->
+<!--     <property name="memoryStoreEvictionPolicy" value="LRU"/> -->
+<!--   </cache> -->
+  
  
     <resultMap id="Pessoa" type="org.imaginary.conceito.datasource.Pessoa">
         <result property="id" column="id"/>
@@ -20,10 +30,15 @@
     </select>
 
 
-    <insert id="inserir"  parameterType="org.imaginary.conceito.datasource.Pessoa"  useGeneratedKeys="true" keyProperty="id">
+    <insert id="inserir"  parameterType="org.imaginary.conceito.datasource.Pessoa"  useGeneratedKeys="true" keyProperty="id" flushCache="true">
       INSERT INTO pessoa( nome, email, dt_nascimento, dt_cadastro)
       VALUES (#{nome}, #{email}, #{dataNascimento}, now())       
     </insert>
+    
+    
+    <select id="obterTodos" resultType="List">    
+	    SELECT id, nome, email, dt_nascimento, dt_cadastro  FROM pessoa
+    </select>
     
       
 </mapper>
