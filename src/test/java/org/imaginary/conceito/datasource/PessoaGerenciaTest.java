@@ -64,6 +64,12 @@ public class PessoaGerenciaTest
 		
 		DataBaseContextHolder.setDatabaseType("A");
 		System.out.println(pessoaGerencia.obterPessoa(1));
+		
+		
+		/**  Pegar classe e implementar um cache com base no DataBaseContextHolder HOLDER
+		 * https://github.com/mybatis/ehcache-cache/blob/master/src/main/java/org/mybatis/caches/ehcache/EhcacheCache.java
+		 * 
+		 */
 	}
 
 }
