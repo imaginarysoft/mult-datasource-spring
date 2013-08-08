@@ -20,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class RelatorioControle
 {
 
-	//url -> http://localhost:8080/relatorios/relatorio/contatos/lista.pdf?nomeRelatorio=contatos
+	//url -> http://localhost:8080/mult-datasource/controle/relatorio/pessoal.pdf?nomeRelatorio=pessoas&dominio=B
 	@RequestMapping("/pessoal")
 	public ModelAndView montarRelatorio(HttpServletRequest request, 
 			                    HttpServletResponse response,
