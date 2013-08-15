@@ -76,6 +76,16 @@ anotar passos - para melhorar o codigo
 	 p:dataSource-ref="multiDataSource"/>
 
 
+
+   <!--  monitorar - java melody  -->
+   
+   <bean id="facadeMonitoringAdvisor" class="net.bull.javamelody.MonitoringSpringAdvisor">
+	<property name="pointcut">
+		<bean class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+			<property name="pattern" value=".*Servico.*" />
+		</bean>
+	</property>
+</bean>
     
 
 

@@ -56,9 +56,48 @@
 
 	<filter-mapping>
 		<filter-name>dominio-filter</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/controle/*</url-pattern>
 	</filter-mapping>
 	
+	
+	
+	
+	<!--====================== Monitoring ===================================-->
+	
+		<!-- Monitor filter -->
+		<filter>
+			<filter-name>monitoring</filter-name>
+			<filter-class>net.bull.javamelody.MonitoringFilter</filter-class>
+			<init-param>
+				<param-name>storage-directory</param-name>
+				<param-value>logs/monitoring</param-value>
+			</init-param>
+			<init-param>
+				<param-name>url-exclude-pattern</param-name>
+				<param-value>(/images/.*|/js/.*|/styles/.*)</param-value>
+			</init-param>
+<!-- 			<init-param> -->
+<!-- 				<param-name>admin-emails</param-name> -->
+<!-- 				<param-value>valterlobo@gmail.com</param-value> -->
+<!-- 			</init-param> -->
+<!-- 			<init-param> -->
+<!-- 				<param-name>mail-session</param-name> -->
+<!-- 				<param-value>MailSession</param-value> -->
+<!-- 			</init-param> -->
+<!-- 			<init-param> -->
+<!-- 				<param-name>mail-periods</param-name> -->
+<!-- 				<param-value>week,month</param-value> -->
+<!-- 			</init-param> -->
+		</filter>
+		<filter-mapping>
+			<filter-name>monitoring</filter-name>
+			<url-pattern>/*</url-pattern>
+		</filter-mapping>
+		<listener>
+			<listener-class>net.bull.javamelody.SessionListener</listener-class>
+		</listener>
+
+ <!--  fim monitorar  -->
 	
    
    	<servlet>
