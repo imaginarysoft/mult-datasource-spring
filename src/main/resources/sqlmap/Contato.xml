@@ -5,6 +5,9 @@
  
 <mapper namespace="Contato">
 
+<!--     <cache type="org.imaginary.conceito.cache.EhCacheMapCache" /> -->
+<!--      <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
+  <cache type="org.imaginary.conceito.cache.EhCacheDelegateCache" />
  
     <resultMap id="Contato" type="org.imaginary.conceito.datasource.Contato">
         <result property="id" column="id"/>
@@ -22,5 +25,9 @@
         INSERT INTO contato(id_pes, nome, dt_cadastro)  VALUES (#{idPes}, #{nome}, now());
     </insert>
     
+    
+   <select id="obterPorPessoaId" resultMap="Contato" parameterType="Integer">
+		     SELECT id, id_pes, nome, dt_cadastro  FROM contato  where id_pes=#{id}
+   </select>
       
 </mapper>

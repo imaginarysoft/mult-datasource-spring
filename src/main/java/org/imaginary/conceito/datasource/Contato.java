@@ -1,10 +1,11 @@
 package org.imaginary.conceito.datasource;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-public class Contato
+public class Contato implements Serializable
 {
 	
 	private Integer id; 

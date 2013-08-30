@@ -55,15 +55,59 @@ public class PessoaGerenciaTest
 		
 		pessoaGerencia.novaPessoaContatos(pes);
 	}
+	
+	
+	@Test
+	public void testObterPessoaContatos()
+	{
+		System.out.println(" Data Base B *******************************************");
+		DataBaseContextHolder.setDatabaseType("B");
+		System.out.println(" Chamando TODOS B  *******************************************");
+		pessoaGerencia.obterTodos();
+		System.out.println(pessoaGerencia.obterPessoa(2));
+		System.out.println(" Chamando TODOS B  *******************************************");
+		pessoaGerencia.obterTodos();
+	
+		
+	}
 
 	@Test
 	public void testObterPessoa()
 	{
+		System.out.println(" Data Base B *******************************************");
 		DataBaseContextHolder.setDatabaseType("B");
 		System.out.println(pessoaGerencia.obterPessoa(1));
 		
+		System.out.println(pessoaGerencia.obterPessoa(4));
+		
+		
+		System.out.println(" Data Base A *******************************************");
 		DataBaseContextHolder.setDatabaseType("A");
 		System.out.println(pessoaGerencia.obterPessoa(1));
+		
+		System.out.println(" De novo 1" +  pessoaGerencia.obterPessoa(1));
+		
+		
+		System.out.println(" A  4 ? null" +  pessoaGerencia.obterPessoa(4));
+		
+		System.out.println(" Mudou para  B *******************************************");
+		DataBaseContextHolder.setDatabaseType("B");
+		System.out.println(pessoaGerencia.obterPessoa(4));
+		
+		/*System.out.println(" Inserinfo no A  *******************************************");
+		DataBaseContextHolder.setDatabaseType("A");
+		Pessoa pes = new Pessoa();
+		pes.setDataNascimento(Calendar.getInstance().getTime());
+		pes.setNome("Maria A");
+		pes.setEmail("MariaA@gmail.com");
+		
+				
+		pessoaGerencia.novaPessoaContatos(pes);
+		
+		System.out.println(" A  4 ? ficou  null : " +  pessoaGerencia.obterPessoa(4));*/
+		
+	
+		
 		
 		
 		/**  Pegar classe e implementar um cache com base no DataBaseContextHolder HOLDER

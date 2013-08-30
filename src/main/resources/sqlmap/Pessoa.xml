@@ -6,21 +6,16 @@
 <mapper namespace="Pessoa">
 
 
-
-  <cache type="org.mybatis.caches.ehcache.LoggingEhcache">
-    <property name="timeToIdleSeconds" value="360"/>
-    <property name="timeToLiveSeconds" value="360"/>
-    <property name="maxEntriesLocalHeap" value="1000"/>
-    <property name="maxEntriesLocalDisk" value="100000"/>
-    <property name="memoryStoreEvictionPolicy" value="LRU"/>
-  </cache>
-  
+  <cache type="org.imaginary.conceito.cache.EhCacheDelegateCache" />
+<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache"/> -->
  
     <resultMap id="Pessoa" type="org.imaginary.conceito.datasource.Pessoa">
         <result property="id" column="id"/>
 		<result property="nome" column="nome"/>		
 		<result property="email" column="email"/>
-		<result property="dataNascimento" column="dt_nascimento"/>			    
+		<result property="dataNascimento" column="dt_nascimento"/>	
+		  <collection property="listaContatos" column="id" javaType="ArrayList"  
+        ofType="org.imaginary.conceito.datasource.Contato" select="Contato.obterPorPessoaId"/>        		    
     </resultMap>
 
    
@@ -36,7 +31,7 @@
     </insert>
     
     
-    <select id="obterTodos" resultType="List">    
+    <select id="obterTodos" resultMap="Pessoa"  >    
 	    SELECT id, nome, email, dt_nascimento, dt_cadastro  FROM pessoa
     </select>
     

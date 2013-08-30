@@ -24,6 +24,12 @@ public class PessoaGerencia
 		  return pes;
 	 }
 	 
+	 public  List<Pessoa> obterTodos()
+	 {
+		 return   sqlsession.selectList("Pessoa.obterTodos");
+		 
+	 }
+	 
 	 
 	 public  Pessoa obterPessoa(Integer idPes)
 	 {
@@ -40,14 +46,17 @@ public class PessoaGerencia
 		sqlsession.insert("Pessoa.inserir", pes);
 		
 		List<Contato> listaContatos = pes.getListaContatos();
-		
-		for (Iterator iterator = listaContatos.iterator(); iterator.hasNext();)
+		if(listaContatos!=null)
 		{
-			 contato = (Contato) iterator.next();
-			 contato.setIdPes(pes.getId());
-			 sqlsession.insert("Contato.inserir", contato);
-			
+			for (Iterator iterator = listaContatos.iterator(); iterator.hasNext();)
+			{
+				 contato = (Contato) iterator.next();
+				 contato.setIdPes(pes.getId());
+				 sqlsession.insert("Contato.inserir", contato);
+				
+			}
 		}
+		
 		
 	}
 }
