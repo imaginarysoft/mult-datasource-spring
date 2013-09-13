@@ -134,7 +134,7 @@ public class PessoaGerenciaTest
 		 for (Iterator iterator = constrain.iterator(); iterator.hasNext();)
 		{
 			ConstraintViolation<Pessoa> constraintViolation = (ConstraintViolation<Pessoa>) iterator.next();
-			System.out.println(  + "--" + constraintViolation.getInvalidValue() + "--" +  constraintViolation.getMessage());
+			System.out.println(   "--" + constraintViolation.getInvalidValue() + "--" +  constraintViolation.getMessage());
 			 // @Todo nome do campo ? 
 		}
 	
