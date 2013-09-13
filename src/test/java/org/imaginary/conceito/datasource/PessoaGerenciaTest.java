@@ -27,10 +27,10 @@ public class PessoaGerenciaTest
 	@Test
 	public void testNovaPessoa()
 	{
-		DataBaseContextHolder.setDatabaseType("B");
+		DataBaseContextHolder.setDatabaseType("A");
 		Pessoa pes = new Pessoa();
 		pes.setDataNascimento(Calendar.getInstance().getTime());
-		pes.setNome("Maria");
+		pes.setNome("Maria A TESTE Audit  novo");
 		pes.setEmail("Maria@gmail.com");
 		
 		Contato contato; 
