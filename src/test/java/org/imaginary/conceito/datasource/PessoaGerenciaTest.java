@@ -2,7 +2,11 @@ package org.imaginary.conceito.datasource;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -114,6 +118,45 @@ public class PessoaGerenciaTest
 		 * https://github.com/mybatis/ehcache-cache/blob/master/src/main/java/org/mybatis/caches/ehcache/EhcacheCache.java
 		 * 
 		 */
+	}
+	
+	
+	@Test
+	public void testPessoaValidador()
+	{
+	
+		Pessoa pes = new Pessoa();
+		pes.setDataNascimento(Calendar.getInstance().getTime());
+		//pes.setNome("Maria A");
+		pes.setEmail("MariaAgmail.com");
+		 Set<ConstraintViolation<Pessoa>> constrain = pessoaGerencia.validar(pes);
+		 
+		 for (Iterator iterator = constrain.iterator(); iterator.hasNext();)
+		{
+			ConstraintViolation<Pessoa> constraintViolation = (ConstraintViolation<Pessoa>) iterator.next();
+			System.out.println(  + "--" + constraintViolation.getInvalidValue() + "--" +  constraintViolation.getMessage());
+			 // @Todo nome do campo ? 
+		}
+	
+	}
+	
+	
+	@Test
+	public void testPessoaValidadorContato()
+	{
+	
+		Contato contato = new Contato();
+		//contato.setNome("Valter Lobo");
+		
+		 Set<ConstraintViolation<Contato>> constrain = pessoaGerencia.validarContato(contato);
+		 
+		 for (Iterator iterator = constrain.iterator(); iterator.hasNext();)
+		{
+			ConstraintViolation<Contato> constraintViolation = (ConstraintViolation<Contato>) iterator.next();
+			System.out.println(constraintViolation.getMessage());
+			
+		}
+	
 	}
 
 }

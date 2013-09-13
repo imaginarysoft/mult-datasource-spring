@@ -3,12 +3,15 @@ package org.imaginary.conceito.datasource;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class Contato implements Serializable
 {
 	
 	private Integer id; 
+	@NotNull
 	private String nome; 
 	private Integer idPes; 
 	private Date dataCadastro;

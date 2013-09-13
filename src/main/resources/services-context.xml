@@ -87,6 +87,10 @@ anotar passos - para melhorar o codigo
 	</property>
 </bean>
     
+    
+    <!--  Bean validator  -->
+<!--     <bean id="validator" -->
+<!--       class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/> -->
 
 
 </beans>

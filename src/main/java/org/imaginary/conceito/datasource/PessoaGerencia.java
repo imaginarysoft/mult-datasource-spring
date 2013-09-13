@@ -2,6 +2,12 @@ package org.imaginary.conceito.datasource;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +20,7 @@ public class PessoaGerencia
 {
 	 @Autowired
      private SqlSession sqlsession;
+	 
 	 
 	
 	 
@@ -57,6 +64,33 @@ public class PessoaGerencia
 			}
 		}
 		
+		
+	}
+
+	public Set<ConstraintViolation<Pessoa>> validar(Pessoa pes)
+	{
+		//ver como instanciar mas centralizado o validator factory
+		
+		ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
+		
+		Validator validator = validatorFactory.getValidator();
+
+		
+		return validator.validate(pes);
+		
+	}
+	
+	
+	public Set<ConstraintViolation<Contato>> validarContato(Contato contato)
+	{
+		
+		
+		ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
+		
+		Validator validator = validatorFactory.getValidator();
+
+		
+		return validator.validate(contato);
 		
 	}
 }
