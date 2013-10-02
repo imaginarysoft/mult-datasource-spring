@@ -25,7 +25,7 @@ public class Pessoa  implements Serializable
     @Email
 	private String email; 
     
-    @NotNull
+    @NotNull(message="{NotNull.Pessoa.dataNascimento}")
 	private Date dataNascimento;
 	
     

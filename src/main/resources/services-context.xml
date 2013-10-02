@@ -92,5 +92,18 @@ anotar passos - para melhorar o codigo
 <!--     <bean id="validator" -->
 <!--       class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/> -->
 
+<bean id="validator"	 class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+
+      
+ <bean id="messageSource"
+        class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>messages</value>
+                <value>modulo_message</value>
+            </list>
+        </property>
+    </bean>
+   
 
 </beans>

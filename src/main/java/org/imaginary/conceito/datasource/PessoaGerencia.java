@@ -21,6 +21,9 @@ public class PessoaGerencia
 	 @Autowired
      private SqlSession sqlsession;
 	 
+	 @Autowired
+	 private Validator validator;
+	 
 	 
 	
 	 
@@ -71,9 +74,9 @@ public class PessoaGerencia
 	{
 		//ver como instanciar mas centralizado o validator factory
 		
-		ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
+		//ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
 		
-		Validator validator = validatorFactory.getValidator();
+		//Validator validator = validatorFactory.getValidator();
 
 		
 		return validator.validate(pes);
@@ -85,9 +88,9 @@ public class PessoaGerencia
 	{
 		
 		
-		ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
+		//ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
 		
-		Validator validator = validatorFactory.getValidator();
+		//Validator validator = validatorFactory.getValidator();
 
 		
 		return validator.validate(contato);

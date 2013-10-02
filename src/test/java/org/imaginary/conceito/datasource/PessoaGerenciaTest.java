@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -12,6 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -21,6 +24,9 @@ public class PessoaGerenciaTest
 {
 	@Autowired
 	PessoaGerencia pessoaGerencia;
+	
+	@Autowired 
+	ResourceBundleMessageSource messageSource; 
 
 
 	@Before
@@ -31,10 +37,10 @@ public class PessoaGerenciaTest
 	@Test
 	public void testNovaPessoa()
 	{
-		DataBaseContextHolder.setDatabaseType("A");
+		DataBaseContextHolder.setDatabaseType("B");
 		Pessoa pes = new Pessoa();
 		pes.setDataNascimento(Calendar.getInstance().getTime());
-		pes.setNome("Maria A TESTE Audit  novo");
+		pes.setNome("Maria A TESTE Roolbacl  novo");
 		pes.setEmail("Maria@gmail.com");
 		
 		Contato contato; 
@@ -48,16 +54,21 @@ public class PessoaGerenciaTest
 		contato.setNome("Ana Beatriz Lobo");
 		listContatos.add(contato);
 		
-		contato = new Contato();
-		contato.setNome("Auginete Lobo");
-		listContatos.add(contato);
-		
-		
 
 		
 		pes.setListaContatos(listContatos);
 		
 		pessoaGerencia.novaPessoaContatos(pes);
+		
+		
+		//banco A
+		
+		DataBaseContextHolder.setDatabaseType("A");
+		contato = new Contato();
+		contato.setNome("Auginete Lobo");
+		listContatos.add(contato);
+		pessoaGerencia.novaPessoaContatos(pes);
+		
 	}
 	
 	
@@ -126,7 +137,7 @@ public class PessoaGerenciaTest
 	{
 	
 		Pessoa pes = new Pessoa();
-		pes.setDataNascimento(Calendar.getInstance().getTime());
+		//pes.setDataNascimento(Calendar.getInstance().getTime());
 		//pes.setNome("Maria A");
 		pes.setEmail("MariaAgmail.com");
 		 Set<ConstraintViolation<Pessoa>> constrain = pessoaGerencia.validar(pes);
@@ -134,7 +145,7 @@ public class PessoaGerenciaTest
 		 for (Iterator iterator = constrain.iterator(); iterator.hasNext();)
 		{
 			ConstraintViolation<Pessoa> constraintViolation = (ConstraintViolation<Pessoa>) iterator.next();
-			System.out.println(   "--" + constraintViolation.getInvalidValue() + "--" +  constraintViolation.getMessage());
+			System.out.println(   "--" + constraintViolation.getInvalidValue() + "--" +  constraintViolation.getMessage()  + "--"  + constraintViolation.getMessageTemplate());
 			 // @Todo nome do campo ? 
 		}
 	
@@ -158,5 +169,26 @@ public class PessoaGerenciaTest
 		}
 	
 	}
+	
+	
+	@Test
+	public void testMensagem()
+	{
+	
+		Object[] args = null;
+		Locale locale = Locale.getDefault();
+		String messagem1 = messageSource.getMessage("modulo.titulo", args, locale);
+		
+		System.out.println(messagem1);
+		
+		
+		String messagem2 = messageSource.getMessage("modulo.nomecampo", args, locale);
+		
+		System.out.println(messagem2);
+	
+	}
+	
+	
+	
 
 }
