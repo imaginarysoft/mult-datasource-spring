@@ -87,14 +87,8 @@ anotar passos - para melhorar o codigo
 	</property>
 </bean>
     
-    
-    <!--  Bean validator  -->
-<!--     <bean id="validator" -->
-<!--       class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/> -->
-
-<bean id="validator"	 class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
-
-      
+<!--  annotation-driven validator="validator" /> -->
+   
  <bean id="messageSource"
         class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basenames">
@@ -103,7 +97,24 @@ anotar passos - para melhorar o codigo
                 <value>modulo_message</value>
             </list>
         </property>
-    </bean>
+ </bean>
+    
+    <!--  Bean validator  -->
+<!--     <bean id="validator" -->
+<!--       class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/> -->
+
+<bean id="validator"	 class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" >
+
+   <property name="validationMessageSource">
+        <ref bean="messageSource"/>
+    </property>
+
+</bean>
+
+
+
+      
+
    
 
 </beans>

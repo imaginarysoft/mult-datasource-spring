@@ -20,7 +20,7 @@ public class DataSourceConfig
 		
 	
 		databaseRouterDataSource.setTargetDataSources(montarDataSources());
-		databaseRouterDataSource.setDefaultTargetDataSource(new DriverManagerDataSource("org.postgresql.Driver" ,"jdbc:postgresql://localhost/data_c", "postgres" , "postgres" ));
+		databaseRouterDataSource.setDefaultTargetDataSource(new DriverManagerDataSource("jdbc:postgresql://localhost/data_c", "postgres" , "postgres" ));
 		
 		return databaseRouterDataSource;
 		
@@ -34,9 +34,10 @@ public class DataSourceConfig
 	{
 		Map  mapDS = new HashMap();
 		
-		mapDS.put("A",  new DriverManagerDataSource("org.postgresql.Driver" ,"jdbc:postgresql://localhost/data_a", "postgres" , "postgres" ));
-		mapDS.put("B", new DriverManagerDataSource("org.postgresql.Driver" ,"jdbc:postgresql://localhost/data_b", "postgres" , "postgres" ));
-		mapDS.put("C", new DriverManagerDataSource("org.postgresql.Driver" ,"jdbc:postgresql://localhost/data_c", "postgres" , "postgres" ));
+		
+		mapDS.put("A",  new DriverManagerDataSource("jdbc:postgresql://localhost/data_a", "postgres" , "postgres" ));
+		mapDS.put("B", new DriverManagerDataSource("jdbc:postgresql://localhost/data_b", "postgres" , "postgres" ));
+		mapDS.put("C", new DriverManagerDataSource("jdbc:postgresql://localhost/data_c", "postgres" , "postgres" ));
 		
 		
 		
